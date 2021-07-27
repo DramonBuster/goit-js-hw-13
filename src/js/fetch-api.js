@@ -2,9 +2,7 @@ import imgCardTpl from '../templates/image-gallery.hbs';
 import refs from "./refs.js";
 const { form, list, card, more } = refs;
 import Notiflix from "notiflix";
-// import SimpleLightbox from "simplelightbox";
-
-var lightbox = $('.gallery a').simpleLightbox(options);
+import SimpleLightbox from "simplelightbox";
 
 
 let total = 0;

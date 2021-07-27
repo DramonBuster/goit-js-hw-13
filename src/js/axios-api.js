@@ -1,6 +1,6 @@
 import axios from "axios";
 import "regenerator-runtime";
-import cardTpl from '../templates/gallery.hbs';
+import cardTpl from '../templates/image-gallery.hbs';
 import refs from "./refs.js";
 const { form, list, card, more } = refs;
 import Notiflix from "notiflix";
@@ -58,8 +58,7 @@ function getFetch() {
     function setQuery(value) {
         return query = value;
     }
-    //функция запроса
-    //асинхронный код
+
     async function getImages() {
         let queryParams = `?key=${apiKey}&q=${query}&image_type=photo&per_page=${per_page}&page=${page}&orientation=horizontal&safesearch=true`;
         let url = baseUrl + queryParams;
