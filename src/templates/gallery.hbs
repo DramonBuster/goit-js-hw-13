@@ -1,7 +1,8 @@
 {{#each this}}
 <div class="image-card">
     <div class="image-thumb">
-        <img src="{{webformatURL}}" alt="{{tags}}" loading="lazy" class="image" />
+        <img src="{{webformatURL}}" data-source="{{largeImageURL}}" alt="{{tags}}" loading="lazy" class="image"
+            data-id="{{id}}" />
     </div>
     <div class="info">
         <p class="info-item">
