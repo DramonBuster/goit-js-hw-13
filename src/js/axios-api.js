@@ -76,15 +76,21 @@ function getFetch() {
         total += photo.length;
         console.log("массив", photo);
         if (photo.length === 0) {
-            more.classList.add("is-hidden");
+            // more.classList.add("is-hidden");
             return Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
         } else if (totalHits === total) {
             list.insertAdjacentHTML("beforeend", gallery);
-            more.classList.add("is-hidden");
+            // more.classList.add("is-hidden");
             return setTimeout(() => {
                 Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
             }, 300);
         }
+
+        if (photo.length !== 0 && totalHits !== total) {
+            more.classList.remove("is-hidden");
+            console.log('removed');
+        }
+
         list.insertAdjacentHTML("beforeend", gallery);
 
         galleryList.addEventListener('click', onOpenModal);
@@ -100,10 +106,6 @@ function getFetch() {
 
     
     function onOpenModal(evt) {
-//         var lightbox = new SimpleLightbox({
-//     elements: document.querySelectorAll('.gallery-list')
-// });
-//         lightbox.show();
         
         if (evt.target.nodeName !== "IMG") {
             return;
@@ -171,6 +173,8 @@ function getFetch() {
 
     function loadMore(button) {
             button.addEventListener("click", () => {
+                more.classList.add("is-hidden");
+                console.log('added is-hidden');
                 setPage();
                 getImages();
             });
