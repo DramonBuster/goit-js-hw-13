@@ -29,7 +29,8 @@ form.addEventListener("submit", (evt) => {
     setTimeout(() => {
         message();
     }, 300);
-    more.classList.remove("is-hidden");
+    
+    
     form.reset();
 });
 
@@ -68,6 +69,10 @@ function getFetch() {
         //console.log(data.hits[i]);
         generateGallery(photo, totalHits);
         hit = totalHits;
+
+        if (hit > per_page * page) {
+            more.classList.remove("is-hidden");
+        }
     }
 
     function generateGallery(photo, totalHits) {
@@ -86,10 +91,10 @@ function getFetch() {
             }, 300);
         }
 
-        if (photo.length !== 0 && totalHits !== total) {
-            more.classList.remove("is-hidden");
-            console.log('removed');
-        }
+        // if (hit > page * per_page) {
+        //     more.classList.remove("is-hidden");
+        //     console.log('removed');
+        // }
 
         list.insertAdjacentHTML("beforeend", gallery);
 
