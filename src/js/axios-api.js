@@ -57,6 +57,7 @@ function getFetch() {
     }
 
     async function getImages() {
+        more.classList.add("is-hidden");
         let queryParams = `?key=${apiKey}&q=${query}&image_type=photo&per_page=${per_page}&page=${page}&orientation=horizontal&safesearch=true`;
         let url = baseUrl + queryParams;
         
@@ -81,20 +82,13 @@ function getFetch() {
         total += photo.length;
         console.log("массив", photo);
         if (photo.length === 0) {
-            // more.classList.add("is-hidden");
             return Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
         } else if (totalHits === total) {
             list.insertAdjacentHTML("beforeend", gallery);
-            // more.classList.add("is-hidden");
             return setTimeout(() => {
                 Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
             }, 300);
         }
-
-        // if (hit > page * per_page) {
-        //     more.classList.remove("is-hidden");
-        //     console.log('removed');
-        // }
 
         list.insertAdjacentHTML("beforeend", gallery);
 
